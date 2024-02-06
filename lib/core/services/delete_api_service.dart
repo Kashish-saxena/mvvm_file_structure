@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 class DeleteApiService {
-  static Future<bool> deleteUser(int userId) async {
+  Future<bool> deleteUser(int userId) async {
     try {
       Response response = await http.delete(
         Uri.parse('https://gorest.co.in/public/v2/users/$userId'),

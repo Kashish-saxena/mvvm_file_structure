@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class LinkButtonWidget extends StatefulWidget {
+class LinkButtonWidget extends StatelessWidget {
   const LinkButtonWidget({super.key});
 
-  @override
-  State<LinkButtonWidget> createState() => _LinkButtonWidgetState();
-}
-
-class _LinkButtonWidgetState extends State<LinkButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(

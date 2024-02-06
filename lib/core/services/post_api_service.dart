@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:mvvm_file_structure/core/models/signup_request_model.dart';
 
 class PostApiService {
-  static Future<bool> postData(SignUpRequestModel signUpRequestModel) async {
+  Future<bool> postData(SignUpRequestModel signUpRequestModel) async {
     try {
       final response = await http.post(Uri.parse("https://gorest.co.in/public/v2/users"),
           body: signUpRequestModelToJson(signUpRequestModel),

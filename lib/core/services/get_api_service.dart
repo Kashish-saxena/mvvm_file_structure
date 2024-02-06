@@ -47,7 +47,7 @@ class GetApiService {
         headers: {
           'Content-Type': 'application/json',
           'Authorization':
-              'Bearer 4886dfcfd3d0dd22cba3a9d2d0aac01a0c43e93259141dc48ba45a5c56f7272b',
+              'Bearer a9a486e9e05ae8f3998761fba962fa5c8bdfd58b227d425373b4566717afd33c',
         },
       );
 

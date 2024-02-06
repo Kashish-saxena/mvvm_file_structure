@@ -11,7 +11,7 @@ class Verification {
   }
 
   static String? isEmailValid(String email) {
-    String pattern = r"^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+    String pattern = r"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$";
     RegExp regExp = RegExp(pattern);
     if (email.isEmpty) {
       return "Enter username or email";

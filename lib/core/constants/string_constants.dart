@@ -1,5 +1,6 @@
 class StringConstants {
   static const String hello = "Hello! Register to get started";
+  static const String loginHello = "Hello! Login to get started";
   static const String name = "Name";
   static const String email = "Email";
   static const String gender = "Gender";
@@ -8,8 +9,10 @@ class StringConstants {
   static const String userRegistered = "User Registered!";
   static const String userNotRegistered = "User Not Registered!";
   static const String register = "Register";
-  static const String or = "Or Register With";
+  static const String orLogin = "Or Login With";
+  static const String orRegister = "Or Register With";
   static const String already = "Already have an account? ";
+  static const String noAccount = "Don't have an account? ";
   static const String login = "Login Now";
   static const String update = "Update";
   static const String updateScreen = "Update Screen";
