@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_file_structure/core/constants/string_constants.dart';
-import 'package:mvvm_file_structure/core/di/controller.dart';
 import 'package:mvvm_file_structure/core/models/signup_request_model.dart';
 import 'package:mvvm_file_structure/core/models/signup_response_model.dart';
 import 'package:mvvm_file_structure/core/utils/validation_utils.dart';
+import 'package:mvvm_file_structure/core/view_model/update_view_model.dart';
 import 'package:mvvm_file_structure/ui/widgets/radio_field.dart';
 import 'package:mvvm_file_structure/ui/widgets/text_form_field.dart';
 
@@ -25,6 +25,7 @@ class UpdateScreenState extends State<UpdateScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   String? gender;
+  UpdateViewModel updateViewModel = UpdateViewModel();
 
   @override
   void initState() {
@@ -145,24 +146,13 @@ class UpdateScreenState extends State<UpdateScreen> {
                         status: "Active",
                       );
 
-                      bool isSuccess = await ApiController.updateUser(
-                          widget.id, signUpRequestModel);
-                      if (isSuccess && context.mounted) {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: Text(StringConstants.updatedDetails),
-                        ));
-                        Navigator.pop(context);
-                      } else if (!isSuccess && context.mounted) {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: Text(StringConstants.failedToUpdate),
-                        ));
-                      }
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text("No changes Detected"),
-                      ));
+                      updateViewModel.updateUser(
+                        context,
+                        widget.id,
+                        signUpRequestModel,
+                        widget.arguments.name??"",
+                        updatedEmail,
+                      );
                     }
                   }
                 },

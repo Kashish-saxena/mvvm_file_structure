@@ -4,6 +4,7 @@ import 'package:mvvm_file_structure/core/constants/string_constants.dart';
 import 'package:mvvm_file_structure/core/models/signup_request_model.dart';
 import 'package:mvvm_file_structure/core/routing/routes.dart';
 import 'package:mvvm_file_structure/core/utils/validation_utils.dart';
+import 'package:mvvm_file_structure/core/view_model/register_view_model.dart';
 import 'package:mvvm_file_structure/ui/widgets/back_button.dart';
 import 'package:mvvm_file_structure/ui/widgets/link_buttons.dart';
 import 'package:mvvm_file_structure/ui/widgets/radio_field.dart';
@@ -23,6 +24,7 @@ class _MyWidgetState extends State<RegisterScreen> {
   TextEditingController emailController = TextEditingController();
   String gender = "male";
 
+  RegisterViewModel registerViewModel = RegisterViewModel();
   late SharedPreferences prefs;
 
   setEmailValues(SignUpRequestModel signUpRequestModel) async {
@@ -41,8 +43,8 @@ class _MyWidgetState extends State<RegisterScreen> {
         surfaceTintColor: Colors.transparent,
         leading: BackButtonWidget(
           onTap: () {
-            Navigator.pushNamedAndRemoveUntil(
-                context, Routes.welcomeScreen, (route) => false);
+            Navigator.popUntil(
+                context, (Route<dynamic> route) => route.isFirst);
           },
         ),
       ),
@@ -142,27 +144,12 @@ class _MyWidgetState extends State<RegisterScreen> {
                               email: emailController.text,
                               gender: gender,
                               status: "Active");
-
                       setEmailValues(signUpRequestModel);
-                      emailController.clear();
-                      nameController.clear();
-                      _registerKey.currentState?.reset();
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text(StringConstants.userRegistered),
-                      ));
-                      emailController.clear();
+                      // emailController.clear();
+                      // nameController.clear();
+                      // _registerKey.currentState?.reset();
 
-                      Navigator.pushNamed(context, Routes.loginScreen);
-                      // bool isSuccess =
-                      //     await ApiController.postData(signUpRequestModel);
-                      // }
-                    } else {
-                      if (context.mounted) {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: Text(StringConstants.userNotRegistered),
-                        ));
-                      }
+                      registerViewModel.postData(context, signUpRequestModel);
                     }
                   },
                   child: const Text(StringConstants.register,

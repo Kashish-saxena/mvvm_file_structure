@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_file_structure/core/constants/string_constants.dart';
 import 'package:mvvm_file_structure/core/routing/routes.dart';
-import 'package:mvvm_file_structure/core/utils/validation_utils.dart';
 import 'package:mvvm_file_structure/ui/widgets/back_button.dart';
 import 'package:mvvm_file_structure/ui/widgets/link_buttons.dart';
 import 'package:mvvm_file_structure/ui/widgets/text_form_field.dart';
@@ -30,7 +29,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   init() async {
     email = await getEmailValues();
-    setState(() {});
   }
 
   @override
@@ -46,8 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
         surfaceTintColor: Colors.transparent,
         leading: BackButtonWidget(
           onTap: () {
-            Navigator.pushNamedAndRemoveUntil(
-                context, Routes.welcomeScreen, (route) => false);
+            Navigator.popUntil(
+                context, (Route<dynamic> route) => route.isFirst);
           },
         ),
       ),
@@ -73,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextFormFieldWidget(
                   validator: (val) {
-                    return Verification.isEmailValid(val);
+                    return null;
                   },
                   obscureText: false,
                   controller: emailController,
@@ -92,7 +90,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     if (emailController.text == email) {
                       emailController.clear();
-
                       _loginKey.currentState?.reset();
                       Navigator.pushNamed(context, Routes.userScreen);
                     } else {
@@ -156,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () {
                         Navigator.pushNamed(context, Routes.registerScreen);
                       },
-                    )
+                    ),
                   ],
                 ),
               ],

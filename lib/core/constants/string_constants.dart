@@ -22,4 +22,8 @@ class StringConstants {
   static const String error = "Error";
   static const String userDeleted = "User Deleted";
   static const String failedToDelete = "Failed to Delete";
+  static const String sessionExpired = "Session Expired";
+  static const String somethingWentWrong = "Something Went Wrong";
+  static const String pageNotFound = "Page Not Found";
+  static const String emailAlreadyExist = "Email Already Exists";
 }

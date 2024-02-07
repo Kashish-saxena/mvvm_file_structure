@@ -4,7 +4,7 @@ import 'package:mvvm_file_structure/core/routing/routes.dart';
 import 'package:mvvm_file_structure/ui/views/login_screen.dart';
 import 'package:mvvm_file_structure/ui/views/register_screen.dart';
 import 'package:mvvm_file_structure/ui/views/update_screen.dart';
-import 'package:mvvm_file_structure/ui/views/user_screen.dart';
+import 'package:mvvm_file_structure/ui/views/user_list_screen.dart';
 import 'package:mvvm_file_structure/ui/views/welcome_screen.dart';
 
 class PageRoutes {
